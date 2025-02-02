@@ -36,10 +36,10 @@ export class QCCL extends PropositionalLogic {
     b = normalizeChoiceResult(b);
     const optionality: number = a.optionality + b.optionality;
     let degree: number;
-    if (a.degree < Infinity) {
-      degree = a.degree;
-    } else if (a.degree === Infinity && b.degree < Infinity) {
-      degree = b.degree + a.optionality;
+    if (a.degree === 1 && b.degree < Infinity) {
+      degree = b.degree;
+    } else if (a.degree < Infinity && (a.degree > 1 || b.degree === Infinity)) {
+      degree = a.degree + b.optionality;
     } else {
       degree = Infinity;
     }
