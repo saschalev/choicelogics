@@ -41,8 +41,8 @@ console.log(choiceResult); // { degree: Infinity, optionality: 1 }
 
 ### Classes
 
-#### `QCCL`
-
+#### `QCCL (Extends PropositionalLogic)`
+A combination of QCL and CCL
 - `static orderedDisjunction(a: ChoiceResult, b: ChoiceResult): ChoiceResult`
 - `static orderedConjunction(a: ChoiceResult, b: ChoiceResult): ChoiceResult`
 
