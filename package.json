@@ -1,0 +1,26 @@
+{
+  "name": "choicelogics",
+  "version": "1.0.0",
+  "description": "This npm package provides a general framework for choice logics. It offers a flexible and extensible foundation for preference modeling and reasoning, encapsulating various choice logics, including Qualitative Choice Logic (QCL) and Conjunctive Choice Logic (CCL), while allowing the definition of new ones.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saschalev/choicelogics.git"
+  },
+  "author": "Sascha Groß",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saschalev/choicelogics/issues"
+  },
+  "homepage": "https://github.com/saschalev/choicelogics#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3"
+  }
+}

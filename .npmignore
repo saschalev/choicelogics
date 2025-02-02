@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Except the dist folder
+!dist/
+!dist/**
+
+# Except the package.json file
+!package.json
+!package-lock.json
