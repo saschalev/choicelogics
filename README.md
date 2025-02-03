@@ -1,5 +1,5 @@
 # choicelogics
-
+This Code is a practical implementation of [Bernreiter, Michael, Jan Maly, and Stefan Woltran. "Choice logics and their computational properties." Artificial Intelligence 311 (2022): 103755](https://doi.org/10.1016/j.artint.2022.103755)
 This npm package provides a general framework for choice logics. It offers a flexible and extensible foundation for preference modeling and reasoning, encapsulating various choice logics, including Qualitative Choice Logic (QCL) and Conjunctive Choice Logic (CCL), while allowing the definition of new ones.
 
 ## Installation
