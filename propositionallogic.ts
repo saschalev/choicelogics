@@ -1,17 +1,17 @@
-import { ChoiceResult } from "./types";
+import { ConnectiveFunction, ModifierFunction } from "./types";
 import { normalizeChoiceResult } from "./utils";
 
 export class PropositionalLogic {
-  public static and(a: ChoiceResult, b: ChoiceResult): ChoiceResult {
+  public static and: ConnectiveFunction = (a, b) => {
     a = normalizeChoiceResult(a);
     b = normalizeChoiceResult(b);
     return {
       degree: Math.max(a.degree, b.degree),
       optionality: Math.max(a.optionality, b.optionality),
     };
-  }
+  };
 
-  public static or(a: ChoiceResult, b: ChoiceResult): ChoiceResult {
+  public static or: ConnectiveFunction = (a, b) => {
     a = normalizeChoiceResult(a);
     b = normalizeChoiceResult(b);
 
@@ -19,12 +19,12 @@ export class PropositionalLogic {
       degree: Math.min(a.degree, b.degree),
       optionality: Math.max(a.optionality, b.optionality),
     };
-  }
+  };
 
-  public static negation(a: ChoiceResult): ChoiceResult {
+  public static negation: ModifierFunction = (a) => {
     return {
       degree: a.degree === Infinity ? 1 : Infinity,
       optionality: 1,
     };
-  }
+  };
 }

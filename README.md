@@ -63,6 +63,24 @@ type ChoiceResult = {
 };
 ```
 
+#### `ConnectiveFunction`
+
+```typescript
+type ConnectiveFunction = (a: ChoiceResult, b: ChoiceResult) => ChoiceResult;
+```
+
+#### `ModifierFunction`
+
+```typescript
+type ModifierFunction = (a: ChoiceResult) => ChoiceResult;
+```
+
+#### `ConnectMultipleFunction`
+
+```typescript
+type ConnectMultipleFunction = (...args: ChoiceResult[]) => ChoiceResult;
+```
+
 ### Util Functions
 
 #### `normalizeChoiceResult(result: ChoiceResult): ChoiceResult`
@@ -73,19 +91,27 @@ type ChoiceResult = {
 
 ## Extending the Logic
 
-You can extend the existing logic by inheriting from the provided classes. Here is an example of how to create a new logic class by extending `PropositionalLogic`:
+You can extend the existing logic by inheriting from the provided classes and using the function types `ConnectiveFunction`, `ModifierFunction`, and `ConnectMultipleFunction`. Here is an example of how to create a new logic class by extending `PropositionalLogic`:
 
 ```typescript
-import { PropositionalLogic, ChoiceResult } from "choicelogics";
+import { PropositionalLogic, ChoiceResult, ConnectiveFunction, ModifierFunction } from "choicelogics";
 
 class CustomLogic extends PropositionalLogic {
-  public static customOperation(a: ChoiceResult, b: ChoiceResult): ChoiceResult {
+  public static customOperation: ConnectiveFunction = (a, b) => {
     // Custom logic implementation
     return {
       degree: a.degree + b.degree,
       optionality: a.optionality * b.optionality,
     };
-  }
+  };
+
+  public static customModifier: ModifierFunction = (a) => {
+    // Custom modifier logic
+    return {
+      degree: a.degree * 2,
+      optionality: a.optionality * 2,
+    };
+  };
 }
 
 const a: ChoiceResult = { degree: 2, optionality: 1 };
@@ -93,6 +119,9 @@ const b: ChoiceResult = { degree: 3, optionality: 2 };
 
 const result = CustomLogic.customOperation(a, b);
 console.log(result); // { degree: 5, optionality: 2 }
+
+const modifierResult = CustomLogic.customModifier(a);
+console.log(negationResult); // { degree: 4, optionality: 2 }
 ```
 
 ## License

@@ -1,12 +1,9 @@
 import { PropositionalLogic } from "./propositionallogic";
-import { ChoiceResult } from "./types";
+import { ConnectiveFunction } from "./types";
 import { normalizeChoiceResult } from "./utils";
 
 export class QCCL extends PropositionalLogic {
-  public static orderedDisjunction(
-    a: ChoiceResult,
-    b: ChoiceResult
-  ): ChoiceResult {
+  public static orderedDisjunction: ConnectiveFunction = (a, b) => {
     a = normalizeChoiceResult(a);
     b = normalizeChoiceResult(b);
 
@@ -26,12 +23,9 @@ export class QCCL extends PropositionalLogic {
       degree,
       optionality,
     };
-  }
+  };
 
-  public static orderedConjunction(
-    a: ChoiceResult,
-    b: ChoiceResult
-  ): ChoiceResult {
+  public static orderedConjunction: ConnectiveFunction = (a, b) => {
     a = normalizeChoiceResult(a);
     b = normalizeChoiceResult(b);
     const optionality: number = a.optionality + b.optionality;
@@ -47,5 +41,5 @@ export class QCCL extends PropositionalLogic {
       degree,
       optionality,
     };
-  }
+  };
 }
