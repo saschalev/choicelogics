@@ -15,7 +15,7 @@ npm install choicelogics
 ### Importing the Module
 
 ```typescript
-import { QCCL, PropositionalLogic, ChoiceResult, normalizeChoiceResult, choiceResultToBool, boolToChoiceResult } from "choicelogics";
+import { QCCL, PropositionalLogic, ChoiceResult, normalizeChoiceResult, choiceResultToBool, boolToChoiceResult, validateChoiceResult } from "choicelogics";
 ```
 
 ### Example
@@ -35,6 +35,9 @@ console.log(boolResult); // true
 
 const choiceResult = boolToChoiceResult(false);
 console.log(choiceResult); // { degree: Infinity, optionality: 1 }
+
+const isValid = validateChoiceResult(a);
+console.log(a) // true
 ```
 
 ## API
@@ -88,6 +91,8 @@ type ConnectMultipleFunction = (...args: ChoiceResult[]) => ChoiceResult;
 #### `boolToChoiceResult(value: boolean): ChoiceResult`
 
 #### `choiceResultToBool(result: ChoiceResult): boolean`
+
+#### `validateChoiceResult(result: ChoiceResult): boolean`
 
 ## Extending the Logic
 

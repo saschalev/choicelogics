@@ -7,6 +7,11 @@ export function normalizeChoiceResult(result: ChoiceResult): ChoiceResult {
   };
 }
 
+export function validateChoiceResult(result: ChoiceResult): boolean {
+  const { degree, optionality } = result;
+  return degree >= 1 && optionality >= 1 && optionality !== Infinity;
+}
+
 export function boolToChoiceResult(value: boolean): ChoiceResult {
   return {
     degree: value ? 1 : Infinity,
